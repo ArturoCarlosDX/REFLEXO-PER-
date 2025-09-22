@@ -1,9 +1,10 @@
-
 from django.contrib import admin
 from .models import Cita
 
-# Registrar el modelo Cita para que sea visible y editable en el panel de administración
 @admin.register(Cita)
 class CitaAdmin(admin.ModelAdmin):
-	list_display = ("nombre", "fecha", "hora", "creada_en_ghl")
-	search_fields = ("nombre", "descripcion")
+    # Mostramos solo los campos que existen en el modelo
+    list_display = ("title", "description", "calendar_id", "location_id", "contact_id", "start_time", "end_time")
+    search_fields = ("title", "description", "contact_id")
+    list_filter = ("calendar_id", "location_id")
+    

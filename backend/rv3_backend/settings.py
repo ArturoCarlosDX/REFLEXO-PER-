@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 
 # Token de autenticación para la API de GHL
 # ¡No usar en producción! Mejor usar variables de entorno.
-GHL_API_TOKEN = "pit-bab7af8d-339e-465a-81a6-e3a790a70940"
+GHL_API_TOKEN = "pit-982fe986-43fa-4e45-9766-fc4b8519e99d"# ⚠️ este viene de tu subcuenta GHL
+GHL_API_BASE = "https://services.leadconnectorhq.com"
+GHL_VERSION = "2021-04-15"
 
 INSTALLED_APPS = [
     'django.contrib.admin',

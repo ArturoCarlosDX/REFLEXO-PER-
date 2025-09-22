@@ -15,16 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+# rv3_backend/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-from citas.views import CitaViewSet
-
-# Router para la API REST de citas
-router = routers.DefaultRouter()
-router.register(r'citas', CitaViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls)), # Rutas de la API REST
+    # Ruta del panel de administración de Django
+    path("admin/", admin.site.urls),
+
+    # Todas las rutas de la app 'citas' estarán bajo /api/
+    # Ejemplo de rutas finales:
+    #   - Listar calendarios: /api/calendars/?locationId=XYZ
+    #   - Listar citas: /api/appointments/?calendarId=XYZ
+    #   - Crear cita: /api/appointments/create/
+    path("api/", include("citas.urls")),
 ]

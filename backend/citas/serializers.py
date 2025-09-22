@@ -6,4 +6,12 @@ class CitaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cita
         fields = '__all__'
-        # Puedes personalizar los campos si lo necesitas
+        # Aquí puedes dejar todos los campos o especificar solo los que quieras usar
+        # Ejemplo: fields = ['calendar_id', 'contact_id', 'title', 'startTime', 'endTime', 'status']
+
+# Serializer para los calendarios (no está ligado a un modelo Django, por eso usamos Serializer)
+class CalendarSerializer(serializers.Serializer):
+    id = serializers.CharField()
+    name = serializers.CharField()
+    # Mapeamos el valor de isActive de la API externa al campo status del serializer
+    status = serializers.BooleanField(source="isActive")
